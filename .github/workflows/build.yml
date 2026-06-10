@@ -37,6 +37,8 @@ jobs:
         run: |
           mkdir -p upload
           cp -rf plugin/build/libs/chestcommands-plugin-*.jar ./upload/ChestcommandsX.jar
+          export CORE_DATE=$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
+          echo "CORE_DATE=$CORE_DATE" >> $GITHUB_ENV
         
       - name: 上传插件jar
         uses: actions/upload-artifact@v4
@@ -47,12 +49,12 @@ jobs:
       - name: 生成标签，上传固件 
         uses: ncipollo/release-action@main
         with:
-          tag: ChestcommandsX_$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
+          tag: ChestcommandsX-Plugins
           artifacts: upload/*
           allowUpdates: true
           removeArtifacts: false
           replacesArtifacts: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: GITHUB_TOKEN_$CORE_DATE
           body: |
             ====================🧊插件信息🧊=======================
             ➦ 📒 插件名称：ChestCommandsX
