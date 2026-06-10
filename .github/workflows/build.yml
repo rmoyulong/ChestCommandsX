@@ -34,8 +34,10 @@ jobs:
       - name: 编译
         run: ./gradlew build
 
-      - name: 上传jar插件
-        uses: actions/upload-artifact@v4
+      - name: 上传至发布平台
+        uses: softprops/action-gh-release@v2
         with:
-          name: chestcommands-plugin
-          path: plugin/build/libs/chestcommands-plugin-*.jar
+          tag_name: ChestcommandsX Plugin
+          append_body: true
+          files: |
+            plugin/build/libs/chestcommands-plugin-*.jar         
