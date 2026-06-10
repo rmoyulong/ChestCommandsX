@@ -35,8 +35,8 @@ jobs:
 
       - name: 检测编译完的插件
         run: |
-        mkdir -p upload
-        cp -rf plugin/build/libs/chestcommands-plugin-*.jar ./upload/ChestcommandsX.jar
+          mkdir -p upload
+          cp -rf plugin/build/libs/chestcommands-plugin-*.jar ./upload/ChestcommandsX.jar
         
       - name: 上传插件jar
         uses: actions/upload-artifact@v4
