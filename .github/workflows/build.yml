@@ -43,8 +43,8 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ChestcommandsX Plugin
+          token: Build-$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
+          tag: ChestcommandsX-$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
           body: |
             ====================🧊插件信息🧊=======================
             ➦ 📒 插件名称：ChestCommandsX
