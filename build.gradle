@@ -41,6 +41,11 @@ project(":api") {
         archivesName = "chestcommands-api"
     }
 
+    maven {
+        name = "papermc-repo"
+        url = "https://papermc.io"
+    }
+	
     dependencies {
         compileOnly "io.papermc.paper:paper-api:26.1.2.build.69-stable"
         compileOnly "me.filoghost.fcommons:fcommons:1.2.7"
@@ -59,6 +64,11 @@ project(":plugin") {
         implementation.extendsFrom(shade)
     }
 
+    maven {
+        name = "papermc-repo"
+        url = "https://papermc.io"
+    }
+	
     dependencies {
         compileOnly("io.papermc.paper:paper-api:26.1.2.build.69-stable")
         compileOnly("com.github.MilkBowl:VaultAPI:1.7") {
