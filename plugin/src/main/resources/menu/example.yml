@@ -23,8 +23,6 @@ menu-settings:
   commands:
   - 'menu'
   - 'examplemenu'
-  - 'shop 1'
-  - 'shop 2'
 
   # OPTIONAL
   # How frequently the menu will be refreshed, in seconds.

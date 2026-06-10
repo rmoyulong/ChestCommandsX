@@ -4,15 +4,15 @@ plugins {
 
 allprojects {
     group = "me.filoghost.chestcommands"
-    version = "5.1.1"
+    version = "5.1.2"
 }
 
 subprojects {
     apply plugin: "java-library"
 
     java {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_25
+        targetCompatibility = JavaVersion.VERSION_25
     }
 
     configurations {
@@ -36,13 +36,14 @@ subprojects {
     }
 }
 
+#io.papermc.paper:paper-api:26.1.2.build.69-stable
 project(":api") {
     base {
         archivesName = "chestcommands-api"
     }
 
     dependencies {
-        compileOnly "io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT"
+        compileOnly "io.papermc.paper:paper-api:26.1.2.build.69-stable"
         compileOnly "me.filoghost.fcommons:fcommons:1.2.7"
     }
 }
@@ -60,7 +61,7 @@ project(":plugin") {
     }
 
     dependencies {
-        compileOnly "io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT"
+        compileOnly "io.papermc.paper:paper-api:26.1.2.build.69-stable"
         compileOnly("com.github.MilkBowl:VaultAPI:1.7") {
             exclude group: "org.bukkit", module: "bukkit"
         }

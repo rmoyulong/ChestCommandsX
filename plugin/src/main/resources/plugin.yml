@@ -1,7 +1,7 @@
 name: ChestCommandsX
 main: me.filoghost.chestcommands.ChestCommands
 version: ${pluginVersion}
-api-version: '1.21'
+api-version: '26.1.2'
 folia-supported: true
 authors: [filoghost, CadsMC]
 description: Fork of ChestCommands by CadsMC.
