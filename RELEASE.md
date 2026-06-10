@@ -1,4 +1,4 @@
-# ChestCommandsX 5.1.1
+# ChestCommandsX 5.1.2
 
 Fork of ChestCommands by CadsMC. This release adds more flexible menu commands, dynamic slots, and interactive item input support for Paper/Folia 1.21.x.
 
