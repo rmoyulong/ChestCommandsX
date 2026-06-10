@@ -17,7 +17,7 @@ menu-settings:
   # OPTIONAL
   # Set which commands a player can execute to open the menu.
   # Commands are registered automatically, so they will not appear red in the client command bar.
-  # They are also safe to open on Paper/Folia 1.21.x.
+  # They are also safe to open on Paper/Folia 26.1.2
   # Sub-commands are supported too, for example: shop 1
   # Do not include the leading slash.
   commands:
@@ -37,9 +37,9 @@ menu-settings:
   - 'sound: ui.button.click'
 
   # OPTIONAL
-  # The menu will open only when right-clicking with a compass.
+  # The menu will open only when right-clicking with a trial_key.
   open-with-item:
-    material: COMPASS
+    material: trial_key
     left-click: false
     right-click: true
 

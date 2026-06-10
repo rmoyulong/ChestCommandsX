@@ -6,8 +6,8 @@ Fork of ChestCommands by CadsMC, modernized for Paper/Folia 26.1.2 and Java 25.
 API Javadoc for developers: https://ci.codemc.io/job/filoghost/job/ChestCommands/javadoc/index.html?me/filoghost/chestcommands/api/ChestCommandsAPI.html
 
 ## Requirements
-- Paper, Folia, or a compatible Bukkit implementation based on Minecraft 1.21.x or newer.
-- Java 21 or newer.
+- Paper, Folia, or a compatible Bukkit implementation based on Minecraft 26.1.2 or newer.
+- Java 25 or newer.
 - Vault is optional and only required for economy features.
 - PlaceholderAPI is optional and only required for external placeholders.
 
