@@ -2,6 +2,10 @@ plugins {
     id "com.gradleup.shadow" version "9.4.1" apply false
 }
 
+repositories {
+    maven("https://papermc.io")
+}
+
 allprojects {
     group = "me.filoghost.chestcommands"
     version = "5.1.2"
@@ -40,11 +44,6 @@ project(":api") {
     base {
         archivesName = "chestcommands-api"
     }
-
-    maven {
-        name = "papermc-repo"
-        url = "https://papermc.io"
-    }
 	
     dependencies {
         compileOnly "io.papermc.paper:paper-api:26.1.2.build.69-stable"
@@ -64,11 +63,6 @@ project(":plugin") {
         implementation.extendsFrom(shade)
     }
 
-    maven {
-        name = "papermc-repo"
-        url = "https://papermc.io"
-    }
-	
     dependencies {
         compileOnly("io.papermc.paper:paper-api:26.1.2.build.69-stable")
         compileOnly("com.github.MilkBowl:VaultAPI:1.7") {
