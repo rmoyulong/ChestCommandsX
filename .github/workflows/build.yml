@@ -35,10 +35,10 @@ jobs:
 
       - name: 检测编译完的插件
         run: |
-          mkdir -p upload
-          cp -rf plugin/build/libs/chestcommands-plugin-*.jar ./upload/ChestcommandsX.jar
-          export CORE_DATE=$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
-          echo "CORE_DATE=$CORE_DATE" >> $GITHUB_ENV
+          mkdir -p ./upload
+          cp -f plugin/build/libs/chestcommands-plugin-*.jar ./upload/
+          cd ./upload/
+          echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         
       - name: 上传插件jar
         uses: actions/upload-artifact@v4
@@ -50,11 +50,11 @@ jobs:
         uses: ncipollo/release-action@main
         with:
           tag: ChestcommandsX-Plugins
-          artifacts: upload/*
+          artifacts: ${{ env.FIRMWARE }}/*
           allowUpdates: true
           removeArtifacts: false
           replacesArtifacts: true
-          token: GITHUB_TOKEN_$CORE_DATE
+          token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             ====================🧊插件信息🧊=======================
             ➦ 📒 插件名称：ChestCommandsX
