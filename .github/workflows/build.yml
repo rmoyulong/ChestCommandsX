@@ -43,17 +43,19 @@ jobs:
         with:
           name: chestcommands-plugin
           path: plugin/build/libs/chestcommands-plugin-*.jar
-          
-      - name: 生成标签，上传固件
-        uses: ncipollo/release-action@v1
+ 
+      - name: 生成标签，上传固件 
+        uses: ncipollo/release-action@main
         with:
+          tag: ChestcommandsX_$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
+          artifacts: upload/*
           allowUpdates: true
-          token: Build-$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
-          tag: ChestcommandsX-$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
+          removeArtifacts: false
+          replacesArtifacts: true
+          token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             ====================🧊插件信息🧊=======================
             ➦ 📒 插件名称：ChestCommandsX
             ➦ 💻 插件平台：Minecraft
-            ➦ ⚽ 插件源码：PolarBearEX-8/ChestCommandsX
-          artifacts: ./upload/*
+            ➦ ⚽ 插件源码：PolarBearEX-8/ChestCommandsX         
                       
