@@ -34,10 +34,16 @@ jobs:
       - name: 编译
         run: ./gradlew build
 
-      - name: 上传至发布平台
-        uses: softprops/action-gh-release@v2
+      - name: 生成标签，上传固件
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ChestcommandsX Plugin
-          append_body: true
-          files: |
-            plugin/build/libs/chestcommands-plugin-*.jar         
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ChestcommandsX Plugin
+          body: |
+            ====================🧊插件信息🧊=======================
+            ➦ 📒 插件名称：ChestCommandsX
+            ➦ 💻 插件平台：Minecraft
+            ➦ ⚽ 插件源码：PolarBearEX-8/ChestCommandsX
+          artifacts: plugin/build/libs/*.jar
+                      
