@@ -27,13 +27,13 @@ public abstract class BackendAPI {
     
     public static void setImplementation(@NotNull BackendAPI implementation) {
         Preconditions.notNull(implementation, "implementation");
-        Preconditions.checkState(BackendAPI.implementation == null, "implementation already set");
+        Preconditions.checkState(BackendAPI.implementation == null, "实施方案已设置");
 
         BackendAPI.implementation = implementation;
     }
     
     public static @NotNull BackendAPI getImplementation() {
-        Preconditions.checkState(implementation != null, "no implementation set");
+        Preconditions.checkState(implementation != null, "没有实施方案");
         
         return implementation;
     }

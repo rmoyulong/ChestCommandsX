@@ -17,7 +17,7 @@ public class Lang implements MappedConfig {
     public String no_required_item = "&c您身上包裹里必须有数量为 &e{amount} 的 {material} 并且 &c(耐久性为: {durability}) 的物品.";
     public String no_money = "&c您需要有 {money} 金币才行.";
     public String no_exp = "&c您需要有 {levels} XP 等级才行.";
-    public String menu_not_found = "&c未找到菜单！请告知小森!" + Errors.User.notifyStaffRequest;
+    public String menu_not_found = "&c未找到菜单！请告知小森!";
     public String any = "任意";
     
     private static Lang instance;
