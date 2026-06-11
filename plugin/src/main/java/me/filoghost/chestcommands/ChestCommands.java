@@ -75,9 +75,9 @@ public class ChestCommands extends EnhancedJavaPlugin {
 
     protected void onCheckedEnable() throws PluginEnableException {
         if (pluginInstance != null || System.getProperty("ChestCommandsLoaded") != null) {
-            throw new PluginEnableException("External plugin reloading is not supported:"
-                    + " avoid using /reload or plugin reloaders, and use the command \"/cc reload\" instead."
-                    + " Fully restart the server to enable ChestCommands again.");
+            throw new PluginEnableException("不支持外部插件重新加载:"
+                    + " 避免使用 /重新加载或插件重新加载器，并使用以下命令 \"/cc reload\" 代替."
+                    + " 完全重启服务器以重新启用 ChestCommandsX。");
         }
 
         System.setProperty("ChestCommandsLoaded", "true");
@@ -94,13 +94,13 @@ public class ChestCommands extends EnhancedJavaPlugin {
         BungeeCordHook.INSTANCE.setup();
 
         if (VaultEconomyHook.INSTANCE.isEnabled()) {
-            Log.info("Hooked Vault");
+            Log.info("已关联 Vault");
         } else {
-            Log.warning("Couldn't find Vault and a compatible economy plugin! Money-related features will not work.");
+            Log.warning("找不到 Vault 和兼容的经济插件！与金钱相关的功能将无法使用。");
         }
 
         if (PlaceholderAPIHook.INSTANCE.isEnabled()) {
-            Log.info("Hooked PlaceholderAPI");
+            Log.info("已关联 PlaceholderAPI");
         }
 
         Bukkit.getPluginManager().registerEvents(new CommandListener(), this);
@@ -119,7 +119,7 @@ public class ChestCommands extends EnhancedJavaPlugin {
             FoliaScheduler.runGlobalLater(() -> {
                 Text.send(Bukkit.getConsoleSender(),
                         ChestCommands.CHAT_PREFIX + ChatColor.RED + "Encountered " + errorCollector.getErrorsCount() + " error(s) on load. "
-                        + "Check previous console logs or run \"/chestcommands errors\" to see them again.");
+                        + "查看之前的控制台日志或运行 \"/chestcommands errors\" 希望能再次发现它们。");
             }, 10L);
         }
 
@@ -127,12 +127,12 @@ public class ChestCommands extends EnhancedJavaPlugin {
             UpdateChecker.run(this, 56919, (String newVersion) -> {
                 ChestCommands.newVersion = newVersion;
 
-                Log.info("Found a new version: " + newVersion + " (yours: v" + getDescription().getVersion() + ")");
-                Log.info("Download the update on Bukkit Dev:");
+                Log.info("找到新版本: " + newVersion + " (你的: v" + getDescription().getVersion() + ")");
+                Log.info("从 Bukkit Dev 下载更新:");
                 Log.info("https://dev.bukkit.org/projects/chest-commands");
             });
         } else if (Settings.get().update_notifications) {
-            Log.info("Update checker is disabled on Folia.");
+            Log.info("Folia 上的更新检查功能已禁用。");
         }
 
         if (!FoliaScheduler.isFolia()) {
@@ -215,19 +215,19 @@ public class ChestCommands extends EnhancedJavaPlugin {
 
     private void printCriticalError(List<String> messageLines, Throwable throwable) {
         if (messageLines != null && !messageLines.isEmpty()) {
-            getLogger().severe("Fatal error while enabling plugin:");
+            getLogger().severe("启用插件时发生致命错误:");
             for (String line : messageLines) {
                 getLogger().severe(line);
             }
         } else {
-            getLogger().severe("Fatal unexpected error while enabling plugin:");
+            getLogger().severe("启用插件时发生致命意外错误:");
         }
 
         if (throwable != null) {
-            getLogger().log(java.util.logging.Level.SEVERE, "Plugin enable failed.", throwable);
+            getLogger().log(java.util.logging.Level.SEVERE, "插件启用失败。", throwable);
         }
 
-        getLogger().severe("ChestCommands has been disabled.");
+        getLogger().severe("ChestCommandsX 已被禁用。");
     }
 
     protected static class PluginEnableException extends Exception {

@@ -55,33 +55,33 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
     @Override
     protected void sendNoArgsMessage(CommandContext context) {
         CommandSender sender = context.getSender();
-        Text.send(sender, ChestCommands.CHAT_PREFIX);
-        Text.send(sender, ChatColor.GREEN + "Version: " + ChatColor.GRAY + ChestCommands.getInstance().getDescription().getVersion());
-        Text.send(sender, ChatColor.GREEN + "Developer: " + ChatColor.GRAY + "filoghost");
-        Text.send(sender, ChatColor.GREEN + "Commands: " + ChatColor.GRAY + "/" + context.getRootLabel() + " help");
+        sender.sendMessage(ChestCommands.CHAT_PREFIX);
+        sender.sendMessage(ChatColor.GREEN + "版本: " + ChatColor.GRAY + ChestCommands.getInstance().getDescription().getVersion());
+        sender.sendMessage(ChatColor.GREEN + "开发者: " + ChatColor.GRAY + "filoghost");
+        sender.sendMessage(ChatColor.GREEN + "命令: " + ChatColor.GRAY + "/" + context.getRootLabel() + " help");
     }
-    
+	
     @Override
     protected void sendUnknownSubCommandMessage(SubCommandContext context) {
-        Text.send(context.getSender(), ChatColor.RED + "Unknown sub-command \"" + context.getSubLabel() + "\". "
-                + "Use \"/" + context.getRootLabel() + " help\" to see available commands.");
-    }
+        context.getSender().sendMessage(ChatColor.RED + "未知子命令 \"" + context.getSubLabel() + "\". "
+                + "使用 \"/" + context.getRootLabel() + " help\" 查看可用命令。");
+    }	
 
     @Name("help")
     @Permission(Permissions.COMMAND_PREFIX + "help")
     public void help(CommandSender sender, SubCommandContext context) {
-        Text.send(sender, ChestCommands.CHAT_PREFIX + "Commands:");
+        sender.sendMessage(ChestCommands.CHAT_PREFIX + "命令:");
         for (AnnotatedSubCommand subCommand : getSubCommands()) {
             if (subCommand == context.getSubCommand()) {
                 continue;
             }
             String usageText = getUsageText(context, subCommand);
-            Text.send(sender, ChatColor.WHITE + usageText + ChatColor.GRAY + " - " + subCommand.getDescription());
+            sender.sendMessage(ChatColor.WHITE + usageText + ChatColor.GRAY + " - " + subCommand.getDescription());
         }
     }
 
     @Name("reload")
-    @Description("Reloads the plugin.")
+    @Description("插件已重新加载.")
     @Permission(Permissions.COMMAND_PREFIX + "reload")
     @DisplayPriority(100)
     public void reload(CommandSender sender) {
@@ -90,18 +90,18 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
         ErrorCollector errorCollector = ChestCommands.load();
 
         if (!errorCollector.hasErrors()) {
-            Text.send(sender, ChestCommands.CHAT_PREFIX + "Plugin reloaded.");
+            sender.sendMessage(ChestCommands.CHAT_PREFIX + "配置文件加载成功.");
         } else {
             errorCollector.logToConsole();
-            Text.send(sender, ChestCommands.CHAT_PREFIX + ChatColor.RED + "Plugin reloaded with " + errorCollector.getErrorsCount() + " error(s).");
+            sender.sendMessage(ChestCommands.CHAT_PREFIX + ChatColor.RED + "插件已重新加载：" + errorCollector.getErrorsCount() + " 错误。");
             if (!(sender instanceof ConsoleCommandSender)) {
-                Text.send(sender, ChestCommands.CHAT_PREFIX + ChatColor.RED + "Please check the console.");
+                sender.sendMessage(ChestCommands.CHAT_PREFIX + ChatColor.RED + "请检查控制台。");
             }
         }
     }
 
     @Name("errors")
-    @Description("Displays the last load errors on the console.")
+    @Description("在控制台上显示最近的加载错误。")
     @Permission(Permissions.COMMAND_PREFIX + "errors")
     @DisplayPriority(3)
     public void errors(CommandSender sender) {
@@ -109,29 +109,29 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
 
         if (errorCollector.hasErrors()) {
             errorCollector.logToConsole();
-            Text.send(sender, ChestCommands.CHAT_PREFIX + ChatColor.RED + "Last time the plugin loaded, "
-                    + errorCollector.getErrorsCount() + " error(s) were found.");
+            sender.sendMessage(ChestCommands.CHAT_PREFIX + ChatColor.RED + "上次插件加载时间，"
+                    + errorCollector.getErrorsCount() + " 发现错误。");
             if (!(sender instanceof ConsoleCommandSender)) {
-                Text.send(sender, ChestCommands.CHAT_PREFIX + ChatColor.RED + "Errors were printed on the console.");
+                sender.sendMessage(ChestCommands.CHAT_PREFIX + ChatColor.RED + "控制台上列出了错误信息。");
             }
         } else {
-            Text.send(sender, ChestCommands.CHAT_PREFIX + ChatColor.GREEN + "Last plugin load was successful, no errors logged.");
+            sender.sendMessage(ChestCommands.CHAT_PREFIX + ChatColor.GREEN + "上次插件加载成功，未记录任何错误。");
         }
     }
 
     @Name("list")
-    @Description("Lists the loaded menus.")
+    @Description("列出已加载的菜单。")
     @Permission(Permissions.COMMAND_PREFIX + "list")
     @DisplayPriority(2)
     public void list(CommandSender sender) {
-        Text.send(sender, ChestCommands.CHAT_PREFIX + "Loaded menus:");
+        sender.sendMessage(ChestCommands.CHAT_PREFIX + "已加载菜单:");
         for (CaseInsensitiveString name : MenuManager.getMenuFileNames()) {
-            Text.send(sender, ChatColor.GRAY + "- " + ChatColor.WHITE + name);
+            sender.sendMessage(ChatColor.GRAY + "- " + ChatColor.WHITE + name);
         }
     }
 
     @Name("open")
-    @Description("Opens a menu for a player.")
+    @Description("打开玩家菜单。")
     @Permission(Permissions.COMMAND_PREFIX + "open")
     @MinArgs(1)
     @UsageArgs("<menu> [player]")
@@ -143,21 +143,21 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
         if (sender instanceof Player) {
             if (args.length > 1) {
                 CommandValidate.check(sender.hasPermission(Permissions.COMMAND_PREFIX + "open.others"),
-                        "You don't have the permission to open a menu for other players.");
+                        "您没有权限为其他玩家打开菜单。");
                 target = Bukkit.getPlayerExact(args[1]);
             } else {
                 target = (Player) sender;
             }
         } else {
-            CommandValidate.minLength(args, 2, "You must specify a player from the console.");
+            CommandValidate.minLength(args, 2, "您必须通过控制台指定玩家。");
             target = Bukkit.getPlayerExact(args[1]);
         }
 
-        CommandValidate.notNull(target, "That player is not online.");
+        CommandValidate.notNull(target, "该玩家未在线。");
 
         String menuName = Utils.addYamlExtension(args[0]);
         InternalMenu menu = MenuManager.getMenuByFileName(menuName);
-        CommandValidate.notNull(menu, "The menu \"" + menuName + "\" was not found.");
+        CommandValidate.notNull(menu, "菜单 \"" + menuName + "\" 未找到。");
 
         if (!sender.hasPermission(menu.getOpenPermission())) {
             menu.sendNoOpenPermissionMessage(sender);
@@ -174,7 +174,7 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
     }
 
     @Name("sound")
-    @Description("Plays a sound for testing.")
+    @Description("播放声音进行测试。")
     @Permission(Permissions.COMMAND_PREFIX + "sound")
     @MinArgs(1)
     @UsageArgs("<sound> [pitch] [volume]")
@@ -198,7 +198,8 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
         }
 
         FoliaScheduler.runAtPlayer(player, () -> action.execute(player));
-        Text.send(sender, ChatColor.GREEN + "Played sound " + ChatColor.WHITE + args[0] + ChatColor.GREEN + ".");
+        /* Text.send(sender, ChatColor.GREEN + "播放声音 " + ChatColor.WHITE + args[0] + ChatColor.GREEN + "."); */
+		sender.sendMessage(ChatColor.GREEN + "播放声音 " + ChatColor.WHITE + args[0] + ChatColor.GREEN + ".");
     }
 
     @Override
