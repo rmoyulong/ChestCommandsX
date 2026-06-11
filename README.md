@@ -1,22 +1,25 @@
 ChestCommandsX
 ===================
 
-Fork of ChestCommands by CadsMC, modernized for Paper/Folia 26.1.2 and Java 25.
+这是 CadsMC 的 ChestCommands 的一个分支，已针对 Paper/Folia 26.1.2 和 Java 25 进行了现代化改造。
 
-API Javadoc for developers: https://ci.codemc.io/job/filoghost/job/ChestCommands/javadoc/index.html?me/filoghost/chestcommands/api/ChestCommandsAPI.html
+面向开发者的 API Javadoc: https://ci.codemc.io/job/filoghost/job/ChestCommands/javadoc/index.html?me/filoghost/chestcommands/api/ChestCommandsAPI.html
 
-## Requirements
-- Paper, Folia, or a compatible Bukkit implementation based on Minecraft 26.1.2 or newer.
-- Java 25 or newer.
-- Vault is optional and only required for economy features.
-- PlaceholderAPI is optional and only required for external placeholders.
+## 要求
+- Paper、Folia 或基于 Minecraft 26.1.2 或更高版本的兼容 Bukkit 实现。
+
+- Java 25 或更高版本。
+
+- Vault 为可选组件，仅用于经济功能。
+
+- PlaceholderAPI 为可选组件，仅用于外部占位符。
 
 ## Build
 ```powershell
 gradle build
 ```
 
-The plugin jar is created at `plugin/build/libs/chestcommands-plugin-5.1.2.jar`.
+The plugin jar is created at `plugin/build/libs/chestcommands-plugin-5.1.5.jar`.
 
 ## Gradle
 ```groovy
@@ -27,20 +30,30 @@ repositories {
 
 ```groovy
 dependencies {
-    compileOnly "me.filoghost.chestcommands:chestcommands-api:5.1.2"
+    compileOnly "me.filoghost.chestcommands:chestcommands-api:5.1.5"
 }
 ```
 
-## Configuration Notes
-- Use modern material names such as `DIAMOND_SWORD`, `WHITE_WOOL`, and `REDSTONE_LAMP`.
-- Commands under `menu-settings.commands` are dynamically registered. Use `menu`, not `/menu`, and avoid names already used by other plugins. Sub-commands such as `shop 1` are supported.
-- Use `/cc sound <sound> [pitch] [volume]` to test available Minecraft sounds in-game. The sound argument supports tab completion.
-- Folia is declared as supported. Player inventory/menu work is scheduled on the player entity scheduler, while global tasks use Folia's global scheduler. The legacy update checker and bStats scheduler hooks are disabled on Folia.
-- Use `DAMAGE` for item damage. Legacy material data values like `WOOL:14` are not supported.
-- `NBT-DATA` is no longer supported. Use supported metadata keys such as `COLOR`, `SKULL-OWNER`, `ENCHANTMENTS`, `CUSTOM-MODEL-DATA`, `UNBREAKABLE`, and `ITEM-FLAGS`.
-- `boss-bar:` uses the native Bukkit boss bar API. The old `dragon-bar:` prefix still works as an alias.
-- `POSITION-X` and `POSITION-Y` support ranges such as `3-4` and dynamic integer placeholders.
-- `MATERIAL: AIR` can be used for invisible clickable slots, and `DRAG: true` allows a slot to accept normal item movement.
+## 配置说明
 
-## License
-Chest Commands is free software/open source, and is distributed under the [GPL 3.0 License](https://opensource.org/licenses/GPL-3.0). It contains third-party code, see the included THIRD-PARTY.txt file for the license information on third-party code.
+- 请使用现代材质名称，例如 `DIAMOND_SWORD`、`WHITE_WOOL` 和 `REDSTONE_LAMP`。
+
+- `menu-settings.commands` 下的命令是动态注册的。请使用 `menu` 而不是 `/menu`，并避免使用已被其他插件使用的名称。支持子命令，例如 `shop 1`。
+
+- 使用 `/cc sound <sound> [pitch] [volume]` 测试游戏中可用的 Minecraft 音效。sound 参数支持 Tab 键自动补全。
+
+- 已声明支持 Folia。玩家物品栏/菜单操作由玩家实体调度器调度，而全局任务则使用 Folia 的全局调度器。Folia 已禁用旧版更新检查器和 bStats 调度器钩子。
+
+- 使用 `DAMAGE` 表示物品损坏。不支持旧版材质数据值，例如 `WOOL:14`。
+
+- 不再支持 `NBT-DATA`。使用受支持的元数据键，例如 `COLOR`、`SKULL-OWNER`、`ENCHANTMENTS`、`CUSTOM-MODEL-DATA`、`UNBREAKABLE` 和 `ITEM-FLAGS`。
+
+- `boss-bar:` 使用 Bukkit 原生的 Boss 栏 API。旧的 `dragon-bar:` 前缀仍然可以作为别名使用。
+
+- `POSITION-X` 和 `POSITION-Y` 支持诸如 `3-4` 之类的范围以及动态整数占位符。
+
+- `MATERIAL: AIR` 可用于不可见的可点击物品栏，而 `DRAG: true` 允许物品栏接受正常的物品移动。
+
+## 许可
+
+Chest Commands 是自由软件/开源软件，并根据 [GPL 3.0 许可](https://opensource.org/licenses/GPL-3.0) 发布。它包含第三方代码，有关第三方代码的许可信息，请参阅随附的 THIRD-PARTY.txt 文件。

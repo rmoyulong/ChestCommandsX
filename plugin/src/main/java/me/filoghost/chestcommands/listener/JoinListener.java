@@ -23,12 +23,12 @@ public class JoinListener implements Listener {
 
         if (ChestCommands.getLastLoadErrors().hasErrors() && player.hasPermission(Permissions.SEE_ERRORS)) {
             Text.send(player,
-                    ChestCommands.CHAT_PREFIX + ChatColor.RED + "The plugin found " + ChestCommands.getLastLoadErrors().getErrorsCount()
-                    + " error(s) last time it was loaded. You can see them by doing \"/cc reload\" in the console.");
+                    ChestCommands.CHAT_PREFIX + ChatColor.RED + "找到的插件 " + ChestCommands.getLastLoadErrors().getErrorsCount()
+                    + " 上次加载时出现错误。您可以通过以下方式查看错误信息： \"/cc reload\" 在控制台中。");
         }
 
         if (ChestCommands.hasNewVersion() && Settings.get().update_notifications && player.hasPermission(Permissions.UPDATE_NOTIFICATIONS)) {
-            Text.send(player, ChestCommands.CHAT_PREFIX + "Found an update: " + ChestCommands.getNewVersion() + ". Download:");
+            Text.send(player, ChestCommands.CHAT_PREFIX + "找到更新: " + ChestCommands.getNewVersion() + ". 下载:");
             Text.send(player, ChatColor.DARK_GREEN + ">> " + ChatColor.GREEN + "http://dev.bukkit.org/bukkit-plugins/chest-commands");
         }
     }

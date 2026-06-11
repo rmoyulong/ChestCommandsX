@@ -15,7 +15,7 @@ public interface PluginHook {
     boolean isEnabled();
     
     default void checkEnabledState() {
-        Preconditions.checkState(isEnabled(), "Plugin hook " + getClass().getSimpleName() + " is not enabled");
+        Preconditions.checkState(isEnabled(), "插件关联 " + getClass().getSimpleName() + " 未启用");
     }
 
 }

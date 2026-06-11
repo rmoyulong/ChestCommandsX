@@ -72,7 +72,7 @@ public class SignListener implements Listener {
             
             if (menuFileName.isEmpty()) {
                 event.setCancelled(true);
-                Text.send(player, "&cYou must write a menu name in the second line.");
+                Text.send(player, "&c您必须在第二行填写菜单名称。");
                 return;
             }
             
@@ -81,12 +81,12 @@ public class SignListener implements Listener {
             InternalMenu menu = MenuManager.getMenuByFileName(menuFileName);
             if (menu == null) {
                 event.setCancelled(true);
-                Text.send(player, "&cMenu \"" + menuFileName + "\" was not found.");
+                Text.send(player, "&c菜单 \"" + menuFileName + "\" 未找到。");
                 return;
             }
     
             event.setLine(HEADER_LINE, VALID_SIGN_COLOR + event.getLine(HEADER_LINE));
-            Text.send(player, "&aSuccessfully created a sign for the menu " + menuFileName + ".");
+            Text.send(player, "&a成功制作了菜单标志 " + menuFileName + ".");
         }
     }
 

@@ -202,13 +202,13 @@ public class InventoryListener implements Listener {
     private void handleIconClickException(Player clicker, Menu menu, Throwable throwable) {
         String menuDescription;
         if (menu.getPlugin() == ChestCommands.getInstance()) {
-            menuDescription = "the menu \"" + Errors.formatPath(((InternalMenu) menu).getSourceFile()) + "\"";
+            menuDescription = "菜单 \"" + Errors.formatPath(((InternalMenu) menu).getSourceFile()) + "\"";
         } else {
-            menuDescription = "a menu created by the plugin \"" + menu.getPlugin().getName() + "\"";
+            menuDescription = "由插件创建的菜单 \"" + menu.getPlugin().getName() + "\"";
         }
 
-        Log.severe("Encountered an exception while handling a click inside " + menuDescription, throwable);
-        Text.send(clicker, "&cAn internal error occurred when you clicked on the item.");
+        Log.severe("处理点击事件时遇到异常 " + menuDescription, throwable);
+        Text.send(clicker, "&c点击该商品时发生内部错误。");
     }
 
 }
