@@ -165,9 +165,9 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
         }
 
         if (sender.getName().equalsIgnoreCase(target.getName())) {
-            Text.send(sender, ChatColor.GREEN + "Opening the menu " + menuName + ".");
+            Text.send(sender, ChatColor.GREEN + "打开菜单 " + menuName + ".");
         } else {
-            Text.send(sender, ChatColor.GREEN + "Opening the menu " + menuName + " to " + target.getName() + ".");
+            Text.send(sender, ChatColor.GREEN + "打开菜单 " + menuName + " 给 " + target.getName() + ".");
         }
 
         FoliaScheduler.runAtPlayer(target, () -> menu.open(target));
@@ -177,7 +177,7 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
     @Description("播放声音进行测试。")
     @Permission(Permissions.COMMAND_PREFIX + "sound")
     @MinArgs(1)
-    @UsageArgs("<sound> [pitch] [volume]")
+    @UsageArgs("<sound> [音调] [音量]")
     @DisplayPriority(0)
     public void sound(CommandSender sender, String[] args) throws CommandException {
         Player player = CommandValidate.getPlayerSender(sender);
