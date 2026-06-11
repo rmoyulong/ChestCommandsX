@@ -81,7 +81,7 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
     }
 
     @Name("reload")
-    @Description("插件已重新加载.")
+    @Description("重新加载插件.")
     @Permission(Permissions.COMMAND_PREFIX + "reload")
     @DisplayPriority(100)
     public void reload(CommandSender sender) {

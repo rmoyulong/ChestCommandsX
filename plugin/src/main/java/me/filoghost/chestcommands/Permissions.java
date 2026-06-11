@@ -14,6 +14,7 @@ public class Permissions {
             OPEN_MENU_PREFIX = BASE_PREFIX + "open.",
 
             UPDATE_NOTIFICATIONS = BASE_PREFIX + "update",
+			RELOAD_COMMAND_PREFIX = BASE_PREFIX + "reload",
             SEE_ERRORS = BASE_PREFIX + "errors",
             SIGN_CREATE = BASE_PREFIX + "sign";
 
