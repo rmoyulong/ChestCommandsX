@@ -24,11 +24,11 @@ subprojects {
     }
 
     dependencies {
-        compileOnly "org.jetbrains:annotations:20.1.0"
+        compileOnly 'org.jetbrains:annotations:26.1.0'
 
-        testImplementation "org.junit.jupiter:junit-jupiter:5.6.2"
-        testImplementation "org.assertj:assertj-core:3.17.0"
-        testImplementation "org.mockito:mockito-core:3.5.13"
+		testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
+        testImplementation "org.assertj:assertj-core:3.21.0"
+        testImplementation "org.mockito:mockito-core:4.13.2"
     }
 
     tasks.withType(Test).configureEach {
@@ -42,7 +42,7 @@ project(":api") {
     }
 	
     dependencies {
-        compileOnly("io.papermc.paper:paper-api:26.1.2.build.69-stable")
+        compileOnly "io.papermc.paper:paper-api:26.1.2.build.69-stable"
         compileOnly "me.filoghost.fcommons:fcommons:1.2.7"
     }
 }
@@ -60,11 +60,11 @@ project(":plugin") {
     }
 
     dependencies {
-        compileOnly("io.papermc.paper:paper-api:26.1.2.build.69-stable")
+        compileOnly "io.papermc.paper:paper-api:26.1.2.build.69-stable"
         compileOnly("com.github.MilkBowl:VaultAPI:1.7") {
             exclude group: "org.bukkit", module: "bukkit"
         }
-        compileOnly "me.clip:placeholderapi:2.11.6"
+        compileOnly "me.clip:placeholderapi:2.12.2"
 
         shade project(":api")
         shade "org.bstats:bstats-bukkit:3.1.0"
