@@ -1,4 +1,4 @@
-name: ChestCommands
+name: ChestCommandsX
 main: me.filoghost.chestcommands.ChestCommands
 version: ${pluginVersion}
 api-version: '26.1.2'
@@ -10,7 +10,7 @@ softdepend: [Vault, PlaceholderAPI]
 
 commands:
    chestcommands:
-      description: ChestCommands 的主命令.
+      description: ChestCommandsX 的主命令.
       usage: /<command> (启动错误)
       aliases: [cc]
    chestcommands.command.sound:
