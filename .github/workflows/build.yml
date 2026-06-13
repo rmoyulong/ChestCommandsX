@@ -36,7 +36,7 @@ jobs:
       - name: 检测编译完的插件
         run: |
           mkdir -p ./upload
-          cp -f plugin/build/libs/chestcommands-plugin-*.jar ./upload/
+          cp -f plugin/build/libs/chestcommands*.jar ./upload/
           cd ./upload/
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         
@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: chestcommands-plugin
-          path: plugin/build/libs/chestcommands-plugin-*.jar
+          path: plugin/build/libs/chestcommands*.jar
  
       - name: 生成标签，上传固件 
         uses: ncipollo/release-action@main
