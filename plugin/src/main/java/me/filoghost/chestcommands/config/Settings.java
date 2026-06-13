@@ -32,7 +32,7 @@ public class Settings implements MappedConfig {
     @Override
     public List<String> getHeader() {
         return Arrays.asList(
-                "ChestCommandsX 主要配置文件。",
+                "ChestCommands main configuration file.",
                 "Documentation: https://filoghost.me/docs/chest-commands");
     }
 

@@ -92,7 +92,7 @@ public abstract class BaseConfigurableIcon implements Icon {
     }
 
     public void setAmount(int amount) {
-        Preconditions.checkArgument(amount > 0, "数量必须大于 0");
+        Preconditions.checkArgument(amount > 0, "amount must be greater than 0");
         this.amount = Math.min(amount, 127);
         this.amountExpression = null;
         cachedRendering = null;
@@ -118,7 +118,7 @@ public abstract class BaseConfigurableIcon implements Icon {
     }
 
     public void setDamage(int damage) {
-        Preconditions.checkArgument(damage >= 0, "伤害值必须为 0 或更大");
+        Preconditions.checkArgument(damage >= 0, "damage must be 0 or greater");
         this.damage = damage;
         cachedRendering = null;
     }
@@ -129,7 +129,7 @@ public abstract class BaseConfigurableIcon implements Icon {
 
     @Deprecated
     public void setNBTData(@Nullable String nbtData) {
-        throw new UnsupportedOperationException("NBT-DATA Minecraft 1.21 版本已不再支持。");
+        throw new UnsupportedOperationException("NBT-DATA is no longer supported on Minecraft 1.21");
     }
 
     @Deprecated

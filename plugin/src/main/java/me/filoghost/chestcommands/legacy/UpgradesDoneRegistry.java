@@ -54,7 +54,7 @@ public class UpgradesDoneRegistry {
         if (needSave) {
             List<String> lines = new ArrayList<>();
             lines.add("#");
-            lines.add("# 警告：不建议手动编辑此文件");
+            lines.add("# WARNING: manually editing this file is not recommended");
             lines.add("#");
             lines.addAll(upgradesDone);
             Files.createDirectories(saveFile.getParent());

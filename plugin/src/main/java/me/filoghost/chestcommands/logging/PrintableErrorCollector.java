@@ -80,7 +80,7 @@ public class PrintableErrorCollector extends ErrorCollector {
         }
         if (error.getCause() != null) {
             output.append(ChatColor.DARK_GRAY);
-            output.append("--------[ 异常详情 ]--------\n");
+            output.append("--------[ Exception details ]--------\n");
             output.append(ExceptionUtils.getStackTraceOutput(error.getCause()));
             output.append("-------------------------------------\n");
         }

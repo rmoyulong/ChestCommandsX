@@ -38,11 +38,11 @@ public class PositionAttribute implements IconAttribute {
             int firstPosition = NumberParser.getStrictlyPositiveInteger(parts[0].trim());
             int lastPosition = NumberParser.getStrictlyPositiveInteger(parts[1].trim());
             if (firstPosition > lastPosition) {
-                throw new ParseException("位置范围的起始点不能大于其结束点");
+                throw new ParseException("position range start cannot be greater than its end");
             }
             return new int[] {firstPosition, lastPosition};
         } else {
-            throw new ParseException("无效位置范围");
+            throw new ParseException("invalid position range");
         }
     }
     

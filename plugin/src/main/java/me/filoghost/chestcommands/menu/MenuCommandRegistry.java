@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 
 final class MenuCommandRegistry {
 
-    private static final String FALLBACK_PREFIX = "chestcommandsx";
+    private static final String FALLBACK_PREFIX = "chestcommands";
     private static final Pattern VALID_COMMAND = Pattern.compile("[a-z0-9_-]+");
 
     private final CommandMap commandMap = Bukkit.getCommandMap();
@@ -63,8 +63,8 @@ final class MenuCommandRegistry {
 
         for (String commandPart : commandParts) {
             if (!VALID_COMMAND.matcher(commandPart).matches()) {
-                errorCollector.add("无效的菜单命令 \"" + rawCommand + "\" 在 \"" + menu.getSourceFile()
-                        + "\": 子命令之间只能使用字母、数字、下划线、连字符和空格。");
+                errorCollector.add("invalid menu command \"" + rawCommand + "\" in \"" + menu.getSourceFile()
+                        + "\": use only letters, numbers, underscores, hyphens, and spaces between sub-commands");
                 return false;
             }
         }
@@ -76,8 +76,8 @@ final class MenuCommandRegistry {
         }
 
         if (!registeredCommands.containsKey(rootCommand) && commandMap.getKnownCommands().get(rootCommand) != null) {
-            errorCollector.add("无效的菜单命令 \"" + rawCommand + "\" 在 \"" + menu.getSourceFile()
-                    + "\": root 命令 \"/" + rootCommand + "\" 与已注册的命令冲突");
+            errorCollector.add("invalid menu command \"" + rawCommand + "\" in \"" + menu.getSourceFile()
+                    + "\": root command \"/" + rootCommand + "\" conflicts with an already registered command");
             return false;
         }
 
@@ -85,8 +85,8 @@ final class MenuCommandRegistry {
             MenuCommand command = new MenuCommand(rootCommand);
             boolean registered = commandMap.register(rootCommand, FALLBACK_PREFIX, command);
             if (!registered || commandMap.getKnownCommands().get(rootCommand) != command) {
-                errorCollector.add("菜单命令 \"/" + rootCommand + "\" 在 \"" + menu.getSourceFile()
-                        + "\" 无法注册");
+                errorCollector.add("menu command \"/" + rootCommand + "\" in \"" + menu.getSourceFile()
+                        + "\" could not be registered");
                 return false;
             }
 

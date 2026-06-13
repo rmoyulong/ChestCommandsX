@@ -58,7 +58,7 @@ public class InventoryTakeHelper {
     }
 
     public void applyTakeItems() {
-        Preconditions.checkState(success, "物品准备工作未进行或未成功");
+        Preconditions.checkState(success, "items take preparation was not run or successful");
 
         for (RemainingItem remainingItem : remainingItems) {
             int slotIndex = remainingItem.getSlotIndex();

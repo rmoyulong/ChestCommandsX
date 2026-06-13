@@ -11,7 +11,7 @@ import me.filoghost.chestcommands.parsing.ParseException;
 public class NBTDataAttribute implements IconAttribute {
 
     public NBTDataAttribute(String nbtData, AttributeErrorHandler errorHandler) throws ParseException {
-        throw new ParseException("NBT-DATA Minecraft 1.21 已不再支持此功能。 ; 请使用 DAMAGE, CUSTOM-MODEL-DATA, COLOR, SKULL-OWNER, ENCHANTMENTS, UNBREAKABLE, 和 ITEM-FLAGS");
+        throw new ParseException("NBT-DATA is no longer supported on Minecraft 1.21; use DAMAGE, CUSTOM-MODEL-DATA, COLOR, SKULL-OWNER, ENCHANTMENTS, UNBREAKABLE, and ITEM-FLAGS instead");
     }
 
     @Override

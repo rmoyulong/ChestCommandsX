@@ -88,8 +88,8 @@ public class UpgradesExecutor {
             try {
                 boolean modified = upgradeTask.runAndBackupIfNecessary(backup);
                 if (modified) {
-                    Log.info("自动升级的配置文件 \"" + upgradeTask.getUpgradedFile() + "\". "
-                            + "旧文件的备份已保存。");
+                    Log.info("Automatically upgraded configuration file \"" + upgradeTask.getUpgradedFile() + "\". "
+                            + "A backup of the old file has been saved.");
                 }
             } catch (UpgradeTaskException e) {
                 allTasksSuccessful = false;

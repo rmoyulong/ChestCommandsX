@@ -38,7 +38,7 @@ public class ItemFlagsAttribute implements IconAttribute {
             if (flag != null) {
                 flags.add(flag);
             } else {
-                errorHandler.onListElementError(serializedFlag, new ParseException("未知物品标志 \"" + serializedFlag + "\""));
+                errorHandler.onListElementError(serializedFlag, new ParseException("unknown item flag \"" + serializedFlag + "\""));
             }
         }
     }

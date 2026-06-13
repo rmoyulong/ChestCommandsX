@@ -25,7 +25,7 @@ public class GiveMoneyAction implements Action {
         if (VaultEconomyHook.INSTANCE.isEnabled()) {
             VaultEconomyHook.giveMoney(player, moneyToGive);
         } else {
-            Text.send(player, Errors.User.configurationError("未找到兼容经济插件的 Vault。"));
+            Text.send(player, Errors.User.configurationError("Vault with a compatible economy plugin not found"));
         }
     }
 

@@ -40,7 +40,7 @@ public class ItemStackParser {
         }
 
         if (input.contains(":")) {
-            throw new ParseException("旧版材料数据值已不再受支持；请改用 1.21 版本的新材料名称。");
+            throw new ParseException("legacy material data values are no longer supported; use a modern 1.21 material name instead");
         }
 
         this.material = MaterialParser.parseMaterial(input);

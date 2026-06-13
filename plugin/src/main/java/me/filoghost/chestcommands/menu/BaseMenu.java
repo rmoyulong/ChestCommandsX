@@ -27,7 +27,7 @@ public abstract class BaseMenu implements Menu {
 
     public BaseMenu(@NotNull String title, int rows) {
         Preconditions.notNull(title, "title");
-        Preconditions.checkArgument(rows > 0, "行数必须大于 0");
+        Preconditions.checkArgument(rows > 0, "rows must be greater than 0");
         this.title = title;
         this.icons = new ArrayGrid<>(rows, 9);
     }

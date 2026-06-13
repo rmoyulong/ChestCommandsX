@@ -28,7 +28,7 @@ public class AmountAttribute implements IconAttribute {
     public AmountAttribute(String amountExpression, AttributeErrorHandler errorHandler) throws ParseException {
         if (PlaceholderManager.hasDynamicPlaceholders(amountExpression)) {
             if (amountExpression.contains("-")) {
-                throw new ParseException("金额不能是一个范围");
+                throw new ParseException("amount cannot be a range");
             }
 
             this.amount = null;
@@ -37,7 +37,7 @@ public class AmountAttribute implements IconAttribute {
         }
 
         if (amountExpression.contains("-")) {
-            throw new ParseException("数量不能是一个范围");
+            throw new ParseException("amount cannot be a range");
         }
 
         this.amount = NumberParser.getStrictlyPositiveInteger(amountExpression);

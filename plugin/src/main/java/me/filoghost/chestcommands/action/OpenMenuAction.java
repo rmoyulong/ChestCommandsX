@@ -36,7 +36,7 @@ public class OpenMenuAction implements Action {
             });
 
         } else {
-            Text.send(player, Errors.User.configurationError("找不到菜单 \"" + menuName + "\""));
+            Text.send(player, Errors.User.configurationError("couldn't find the menu \"" + menuName + "\""));
         }
     }
 

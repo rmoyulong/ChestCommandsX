@@ -88,7 +88,7 @@ public class ConfigManager extends BaseConfigManager {
     }
 
     public List<Path> getMenuFiles() throws IOException {
-        Preconditions.checkState(Files.isDirectory(getMenusFolder()), "菜单文件夹不存在");
+        Preconditions.checkState(Files.isDirectory(getMenusFolder()), "menus folder doesn't exist");
 
         try (Stream<Path> paths = Files.walk(getMenusFolder(), FileVisitOption.FOLLOW_LINKS)) {
             return paths.filter(this::isYamlFile).collect(Collectors.toList());
