@@ -11,7 +11,7 @@ public class ArrayGrid<T> extends Grid<T> {
 
     private final T[] elements;
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("未经核实")
     public ArrayGrid(int rows, int columns) {
         super(rows, columns);
         this.elements = (T[]) new Object[getSize()];

@@ -15,7 +15,7 @@ public class RequiredExpLevel implements Requirement {
     private final int levels;
 
     public RequiredExpLevel(int levels) {
-        Preconditions.checkArgument(levels > 0, "levels must be positive");
+        Preconditions.checkArgument(levels > 0, "等级必须为正值");
         this.levels = levels;
     }
 

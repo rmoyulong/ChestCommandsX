@@ -46,9 +46,9 @@ public class Backup {
         // Add README file if not already present
         if (!Files.isRegularFile(infoFile)) {
             Files.write(infoFile, Arrays.asList(
-                    "Files in this folders are copies of original configuration files that have been automatically upgraded.",
+                    "此文件夹中的文件是原始配置文件的副本，这些文件已自动升级。",
                     "",
-                    "Note: some configuration upgrades remove comments and other formatting (such as empty lines)."
+                    "注意：某些配置升级会删除注释和其他格式（例如空行）。"
             ));
         }
     }

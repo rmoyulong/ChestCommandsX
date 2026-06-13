@@ -30,7 +30,7 @@ public class ActionsAttribute implements IconAttribute {
                 actions.add(ActionParser.parse(serializedAction));
             } catch (ParseException e) {
                 actions.add(new DisabledAction(Errors.User.configurationError(
-                        "an action linked to clicking this icon was not executed because it was not valid")));
+                        "点击此图标所关联的操作未执行，因为它无效。")));
                 errorHandler.onListElementError(serializedAction, e);
             }
         }

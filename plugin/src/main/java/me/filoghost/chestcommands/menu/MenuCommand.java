@@ -18,14 +18,14 @@ class MenuCommand extends Command {
 
     MenuCommand(String label) {
         super(label);
-        setDescription("Opens a ChestCommands menu.");
+        setDescription("打开 ChestCommandsX 菜单。");
         setUsage("/" + label);
     }
 
     @Override
     public boolean execute(@NotNull CommandSender sender, @NotNull String commandLabel, @NotNull String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("This command can only be used by players.");
+            sender.sendMessage("此指令只能由玩家使用。");
             return true;
         }
 

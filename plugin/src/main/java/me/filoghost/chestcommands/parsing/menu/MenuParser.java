@@ -110,7 +110,7 @@ public class MenuParser {
                         errorCollector.add(e, Errors.Menu.invalidSettingListElement(
                                 config.getSourceFile(), MenuSettingsPath.OPEN_ACTIONS, serializedAction));
                         openActions.add(new DisabledAction(Errors.User.configurationError(
-                                "an action linked to opening this menu was not executed because it was not valid")));
+                                "由于该操作无效，因此与打开此菜单相关的操作未执行。")));
                     }
                 }
             }

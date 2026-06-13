@@ -1,7 +1,7 @@
 name: ChestCommandsX
 main: me.filoghost.chestcommands.ChestCommands
 version: ${pluginVersion}
-api-version: '26.1.2'
+api-version: '1.20.6'
 folia-supported: true
 authors: [filoghost, CadsMC]
 description: CadsMC 的 ChestCommands 分支.
@@ -9,15 +9,15 @@ description: CadsMC 的 ChestCommands 分支.
 softdepend: [Vault, PlaceholderAPI]
 
 commands:
-   chestcommands:
+   chestcommandsx:
       description: ChestCommandsX 的主命令.
       usage: /<command> (启动错误)
-      aliases: [cc]
-   chestcommands.command.sound:
-     description: 允许使用 /cc 音效测试声音.
+      aliases: [cx]
+   chestcommandsx.command.sound:
+     description: 允许使用 /cx 音效测试声音.
      default: op
 
 permissions:
-  chestcommands.economy.bypass:
+  chestcommandsx.economy.bypass:
     description: 绕过本插件的命令收费.
     default: false

@@ -85,7 +85,7 @@ public final class FoliaScheduler {
             Object scheduler = Bukkit.class.getMethod("getGlobalRegionScheduler").invoke(null);
             invokeSchedulerMethod("io.papermc.paper.threadedregions.scheduler.GlobalRegionScheduler", scheduler, methodName, parameterTypes, arguments);
         } catch (ReflectiveOperationException e) {
-            throw new IllegalStateException("Could not use Folia global scheduler.", unwrap(e));
+            throw new IllegalStateException("无法使用Folia全局调度器。", unwrap(e));
         }
     }
 
@@ -94,7 +94,7 @@ public final class FoliaScheduler {
             Object scheduler = player.getClass().getMethod("getScheduler").invoke(player);
             invokeSchedulerMethod("io.papermc.paper.threadedregions.scheduler.EntityScheduler", scheduler, methodName, parameterTypes, arguments);
         } catch (ReflectiveOperationException e) {
-            throw new IllegalStateException("Could not use Folia entity scheduler.", unwrap(e));
+            throw new IllegalStateException("无法使用Folia实体调度器。", unwrap(e));
         }
     }
 

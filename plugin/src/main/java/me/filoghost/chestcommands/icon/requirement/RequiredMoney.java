@@ -17,7 +17,7 @@ public class RequiredMoney implements Requirement {
     private final double moneyAmount;
 
     public RequiredMoney(double moneyAmount) {
-        Preconditions.checkArgument(moneyAmount > 0.0, "money amount must be positive");
+        Preconditions.checkArgument(moneyAmount > 0.0, "必须为正数。");
         this.moneyAmount = moneyAmount;
     }
 
@@ -25,8 +25,8 @@ public class RequiredMoney implements Requirement {
     public boolean hasCost(Player player) {
         if (!VaultEconomyHook.INSTANCE.isEnabled()) {
             Text.send(player, Errors.User.configurationError(
-                    "the item has a price, but Vault with a compatible economy plugin was not found. "
-                    + "For security, the action has been blocked"));
+                    "该物品有价格，但未找到具有兼容经济插件的 Vault。"
+                    + "出于安全考虑，该操作已被阻止。"));
             return false;
         }
 
@@ -43,7 +43,7 @@ public class RequiredMoney implements Requirement {
         boolean success = VaultEconomyHook.takeMoney(player, moneyAmount);
 
         if (!success) {
-            Text.send(player, Errors.User.configurationError("a money transaction couldn't be executed"));
+            Text.send(player, Errors.User.configurationError("一笔资金交易无法执行。"));
         }
 
         return success;

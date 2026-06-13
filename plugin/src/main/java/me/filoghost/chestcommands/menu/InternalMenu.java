@@ -109,7 +109,7 @@ public class InternalMenu extends BaseMenu {
             if (errorCollector != null) {
                 errorCollector.add(
                         Errors.Menu.invalidAttribute(iconSettings, AttributeType.POSITION_Y),
-                        "it must be between 1 and " + getRows());
+                        "它必须介于 1 和 " + getRows());
             }
             invalidPosition = true;
         }
@@ -117,7 +117,7 @@ public class InternalMenu extends BaseMenu {
             if (errorCollector != null) {
                 errorCollector.add(
                         Errors.Menu.invalidAttribute(iconSettings, AttributeType.POSITION_X),
-                        "it must be between 1 and " + getColumns());
+                        "它必须介于 1 和 " + getColumns());
             }
             invalidPosition = true;
         }
