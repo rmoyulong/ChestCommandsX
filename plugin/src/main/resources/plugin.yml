@@ -9,15 +9,15 @@ description: CadsMC 的 ChestCommands 分支.
 softdepend: [Vault, PlaceholderAPI]
 
 commands:
-   chestcmds:
+   chestcommands:
       description: ChestCommandsX 的主命令.
       usage: /<command> (启动错误)
       aliases: [cx]
-   chestcommandsx.command.sound:
+   chestcommands.command.sound:
      description: 允许使用 /cx 音效测试声音.
      default: op
 
 permissions:
-  chestcommandsx.economy.bypass:
+  chestcommands.economy.bypass:
     description: 绕过本插件的命令收费.
     default: false

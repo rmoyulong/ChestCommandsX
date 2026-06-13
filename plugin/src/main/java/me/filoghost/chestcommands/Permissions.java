@@ -9,7 +9,7 @@ public class Permissions {
 
     public static final String
 
-            BASE_PREFIX = "chestcommandsx.",
+            BASE_PREFIX = "chestcommands.",
             COMMAND_PREFIX = BASE_PREFIX + "command.",
             OPEN_MENU_PREFIX = BASE_PREFIX + "open.",
 
