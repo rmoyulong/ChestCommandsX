@@ -19,7 +19,7 @@ ChestCommandsX
 gradle build
 ```
 
-The plugin jar is created at `plugin/build/libs/chestcommands-plugin-5.1.5.jar`.
+The plugin jar is created at `plugin/build/libs/chestcommands-plugin-5.1.6.jar`.
 
 ## Gradle
 ```groovy
@@ -30,7 +30,7 @@ repositories {
 
 ```groovy
 dependencies {
-    compileOnly "me.filoghost.chestcommands:chestcommands-api:5.1.5"
+    compileOnly "me.filoghost.chestcommands:chestcommands-api:5.1.6"
 }
 ```
 

@@ -55,47 +55,48 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
     @Override
     protected void sendNoArgsMessage(CommandContext context) {
         CommandSender sender = context.getSender();
-        sender.sendMessage(ChestCommands.CHAT_PREFIX);
-        sender.sendMessage(ChatColor.GREEN + "版本: " + ChatColor.GRAY + ChestCommands.getInstance().getDescription().getVersion());
-        sender.sendMessage(ChatColor.GREEN + "开发者: " + ChatColor.GRAY + "filoghost");
-        sender.sendMessage(ChatColor.GREEN + "命令: " + ChatColor.GRAY + "/" + context.getRootLabel() + " help");
+        Text.send(sender, ChestCommands.CHAT_PREFIX);
+        Text.send(sender, ChatColor.GREEN + "版本: " + ChatColor.GRAY + ChestCommands.getInstance().getDescription().getVersion());
+        Text.send(sender, ChatColor.GREEN + "开发者: " + ChatColor.GRAY + "filoghost");
+        Text.send(sender, ChatColor.GREEN + "命令: " + ChatColor.GRAY + "/" + context.getRootLabel() + " help");
     }
-	
+    
     @Override
     protected void sendUnknownSubCommandMessage(SubCommandContext context) {
-        context.getSender().sendMessage(ChatColor.RED + "未知子命令 \"" + context.getSubLabel() + "\". "
+        Text.send(context.getSender(), ChatColor.RED + "未知的子命令 \"" + context.getSubLabel() + "\". "
                 + "使用 \"/" + context.getRootLabel() + " help\" 查看可用命令。");
-    }	
+    }
 
     @Name("help")
+	@Description("帮助")
     @Permission(Permissions.COMMAND_PREFIX + "help")
     public void help(CommandSender sender, SubCommandContext context) {
-        sender.sendMessage(ChestCommands.CHAT_PREFIX + "命令:");
+        Text.send(sender, ChestCommands.CHAT_PREFIX + "命令:");
         for (AnnotatedSubCommand subCommand : getSubCommands()) {
             if (subCommand == context.getSubCommand()) {
                 continue;
             }
             String usageText = getUsageText(context, subCommand);
-            sender.sendMessage(ChatColor.WHITE + usageText + ChatColor.GRAY + " - " + subCommand.getDescription());
+            Text.send(sender, ChatColor.WHITE + usageText + ChatColor.GRAY + " - " + subCommand.getDescription());
         }
     }
 
     @Name("reload")
-    @Description("重新加载插件.")
+    @Description("重新加载插件。")
     @Permission(Permissions.COMMAND_PREFIX + "reload")
-    @DisplayPriority(100)
+    @DisplayPriority(4)
     public void reload(CommandSender sender) {
         MenuManager.closeAllOpenMenuViews();
 
         ErrorCollector errorCollector = ChestCommands.load();
 
         if (!errorCollector.hasErrors()) {
-            sender.sendMessage(ChestCommands.CHAT_PREFIX + "配置文件加载成功.");
+            Text.send(sender, ChestCommands.CHAT_PREFIX + "插件已重新加载。");
         } else {
             errorCollector.logToConsole();
-            sender.sendMessage(ChestCommands.CHAT_PREFIX + ChatColor.RED + "插件已重新加载：" + errorCollector.getErrorsCount() + " 错误。");
+            Text.send(sender, ChestCommands.CHAT_PREFIX + ChatColor.RED + "插件已重新加载 " + errorCollector.getErrorsCount() + " 错误。");
             if (!(sender instanceof ConsoleCommandSender)) {
-                sender.sendMessage(ChestCommands.CHAT_PREFIX + ChatColor.RED + "请检查控制台。");
+                Text.send(sender, ChestCommands.CHAT_PREFIX + ChatColor.RED + "请检查控制台。");
             }
         }
     }
@@ -109,13 +110,13 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
 
         if (errorCollector.hasErrors()) {
             errorCollector.logToConsole();
-            sender.sendMessage(ChestCommands.CHAT_PREFIX + ChatColor.RED + "上次插件加载时间，"
-                    + errorCollector.getErrorsCount() + " 发现错误。");
+            Text.send(sender, ChestCommands.CHAT_PREFIX + ChatColor.RED + "上次插件加载时间, 发生："
+                    + errorCollector.getErrorsCount() + " 个错误。");
             if (!(sender instanceof ConsoleCommandSender)) {
-                sender.sendMessage(ChestCommands.CHAT_PREFIX + ChatColor.RED + "控制台上列出了错误信息。");
+                Text.send(sender, ChestCommands.CHAT_PREFIX + ChatColor.RED + "控制台上显示了错误信息。");
             }
         } else {
-            sender.sendMessage(ChestCommands.CHAT_PREFIX + ChatColor.GREEN + "上次插件加载成功，未记录任何错误。");
+            Text.send(sender, ChestCommands.CHAT_PREFIX + ChatColor.GREEN + "上次插件加载成功，未记录任何错误。");
         }
     }
 
@@ -124,9 +125,9 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
     @Permission(Permissions.COMMAND_PREFIX + "list")
     @DisplayPriority(2)
     public void list(CommandSender sender) {
-        sender.sendMessage(ChestCommands.CHAT_PREFIX + "已加载菜单:");
+        Text.send(sender, ChestCommands.CHAT_PREFIX + "已加载菜单:");
         for (CaseInsensitiveString name : MenuManager.getMenuFileNames()) {
-            sender.sendMessage(ChatColor.GRAY + "- " + ChatColor.WHITE + name);
+            Text.send(sender, ChatColor.GRAY + "- " + ChatColor.WHITE + name);
         }
     }
 
@@ -134,9 +135,9 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
     @Description("打开玩家菜单。")
     @Permission(Permissions.COMMAND_PREFIX + "open")
     @MinArgs(1)
-    @UsageArgs("<menu> [player]")
+    @UsageArgs("<菜单名> [玩家ID]")
     @DisplayPriority(1)
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings("弃用")
     public void open(CommandSender sender, String[] args) throws CommandException {
         Player target;
 
@@ -167,7 +168,7 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
         if (sender.getName().equalsIgnoreCase(target.getName())) {
             Text.send(sender, ChatColor.GREEN + "打开菜单 " + menuName + ".");
         } else {
-            Text.send(sender, ChatColor.GREEN + "打开菜单 " + menuName + " 给 " + target.getName() + ".");
+            Text.send(sender, ChatColor.GREEN + "打开菜单 " + menuName + " 给玩家： " + target.getName() + ".");
         }
 
         FoliaScheduler.runAtPlayer(target, () -> menu.open(target));
@@ -198,8 +199,7 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
         }
 
         FoliaScheduler.runAtPlayer(player, () -> action.execute(player));
-        /* Text.send(sender, ChatColor.GREEN + "播放声音 " + ChatColor.WHITE + args[0] + ChatColor.GREEN + "."); */
-		sender.sendMessage(ChatColor.GREEN + "播放声音 " + ChatColor.WHITE + args[0] + ChatColor.GREEN + ".");
+        Text.send(sender, ChatColor.GREEN + "播放声音 " + ChatColor.WHITE + args[0] + ChatColor.GREEN + ".");
     }
 
     @Override

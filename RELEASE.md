@@ -1,4 +1,4 @@
-# ChestCommandsX 5.1.5
+# ChestCommandsX 5.1.6
 
 基于 CadsMC 的 ChestCommands 分支。此版本为 Paper/Folia 26.1.2 添加了更灵活的菜单命令、动态槽位和交互式物品输入支持。
 
