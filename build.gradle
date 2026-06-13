@@ -43,8 +43,8 @@ project(":api") {
 	
     dependencies {
         /*compileOnly "io.papermc.paper:paper-api:26.1.2.build.69-stable"*/
-		/*compileOnly "io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT"*/
-		compileOnly "io.papermc.paper:paper-api:1.20.6-R0.1-SNAPSHOT"
+		compileOnly "io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT"
+		/*compileOnly "io.papermc.paper:paper-api:1.20.6-R0.1-SNAPSHOT"*/
         compileOnly "me.filoghost.fcommons:fcommons:1.2.7"
     }
 }
@@ -63,8 +63,8 @@ project(":plugin") {
 
     dependencies {
         /*compileOnly "io.papermc.paper:paper-api:26.1.2.build.69-stable"*/
-		/*compileOnly "io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT"*/
-		compileOnly "io.papermc.paper:paper-api:1.20.6-R0.1-SNAPSHOT"
+		compileOnly "io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT"
+		/*compileOnly "io.papermc.paper:paper-api:1.20.6-R0.1-SNAPSHOT"*/
         compileOnly("com.github.MilkBowl:VaultAPI:1.7") {
             exclude group: "org.bukkit", module: "bukkit"
         }
