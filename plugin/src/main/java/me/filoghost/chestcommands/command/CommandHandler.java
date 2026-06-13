@@ -86,7 +86,7 @@ public class CommandHandler extends AnnotatedSubCommandManager implements TabCom
     @Permission(Permissions.COMMAND_PREFIX + "reload")
     @DisplayPriority(4)
     public void reload(CommandSender sender) {
-        /*MenuManager.closeAllOpenMenuViews();*/
+        MenuManager.closeAllOpenMenuViews();
 
         ErrorCollector errorCollector = ChestCommands.load();
 
