@@ -76,7 +76,7 @@ public class ChestCommands extends EnhancedJavaPlugin {
     protected void onCheckedEnable() throws PluginEnableException {
         if (pluginInstance != null || System.getProperty("ChestCommandsLoaded") != null) {
             throw new PluginEnableException("不支持外部插件重新加载:"
-                    + " 避免使用 /重新加载或插件重新加载器，并使用以下命令 \"/cx reload\" 代替."
+                    + " 避免使用 /重新加载或插件重新加载器，并使用以下命令 \"/cc reload\" 代替."
                     + " 完全重启服务器以重新启用 ChestCommandsX。");
         }
 
@@ -119,7 +119,7 @@ public class ChestCommands extends EnhancedJavaPlugin {
             FoliaScheduler.runGlobalLater(() -> {
                 Text.send(Bukkit.getConsoleSender(),
                         ChestCommands.CHAT_PREFIX + ChatColor.RED + "Encountered " + errorCollector.getErrorsCount() + " error(s) on load. "
-                        + "查看之前的控制台日志或运行 \"/chestcommandsx errors\" 希望能再次发现它们。");
+                        + "查看之前的控制台日志或运行 \"/chestcommands errors\" 希望能再次发现它们。");
             }, 10L);
         }
 
